@@ -9,12 +9,12 @@ if you want to build it yourself, you are going to need:
 To build it you go into powershell and:
 cd path\to\Raw Files
 
-# 1. Create & enter a build directory
+1. Create & enter a build directory
 mkdir build
 cd build
 
-# 2. Configure for VS 2022, 64-bit, Release (but you can also configure it for any IDE you want)
+2. Configure for VS 2022, 64-bit, Release (but you can also configure it for any IDE you want)
 cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release
 
-# 3. Build the Release configuration
+3. Build the Release configuration
 cmake --build . --config Release
