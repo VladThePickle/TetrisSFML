@@ -544,6 +544,11 @@ void gamemanager::mainloop() {
                     laberson->deletepiesaactiva();
                     if (laberson->checkloss()) {
                         deleteboard();
+                        score = 0;
+                        level = 1;
+                        ag = 1;
+                        texts[0].setString("Level: " + std::to_string(level));
+                        texts[1].setString("Score: " + std::to_string(score));
                         running = false;
                         return;  
                     }
