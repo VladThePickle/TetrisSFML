@@ -3,8 +3,8 @@
 If you just want to play it, download prebuilt
 
 if you want to build it yourself, you are going to need:
--g++ or any other c++ compiler
--make and cmake respectively for building
+  1. g++ or any other c++ compiler
+  2. make and cmake respectively for building
 
 To build it you go into powershell and:
 cd path\to\Raw Files
