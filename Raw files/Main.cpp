@@ -9,11 +9,12 @@ int main() {
     game.getwindow().setFramerateLimit(60);
     while (game.getwindow().isOpen()) {
         game.startscreen();
-        while (game.getrunning())
+        while (game.getrunning() && game.getwindow().isOpen())
         {
             game.mainloop();
         }
         game.losescreen();
     }
+    game.getwindow().close();
     return 0;
 }

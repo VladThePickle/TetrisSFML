@@ -511,11 +511,20 @@ void gamemanager::mainloop() {
     while (auto ev = getwindow().pollEvent()) {
 
         if (ev->is<sf::Event::Closed>())
+        {
             getwindow().close();
+          
+            running = false;
+            return;
+        }
         else if (auto* kp = ev->getIf<sf::Event::KeyPressed>())
         {
             if (kp->code == sf::Keyboard::Key::Escape)
+            {
                 getwindow().close();
+                running = false;   // also break out of the game loop immediately
+                return;
+            }
             else if (kp->code == sf::Keyboard::Key::Up)
             {
                 if (laberson->getpiesaactiva())
@@ -544,6 +553,11 @@ void gamemanager::mainloop() {
                     laberson->deletepiesaactiva();
                     if (laberson->checkloss()) {
                         deleteboard();
+                        score = 0;
+                        level = 1;
+                        ag = 1;
+                        texts[0].setString("Level: " + std::to_string(level));
+                        texts[1].setString("Score: " + std::to_string(score));
                         running = false;
                         return;  
                     }
@@ -624,16 +638,24 @@ sf::Font gamemanager::getfont()
 void gamemanager::losescreen()
 {
     bool run = true;
-    while (run)
+    while (run && getwindow().isOpen())
     {
         while (auto ev = getwindow().pollEvent()) {
 
             if (ev->is<sf::Event::Closed>())
+            {
                 getwindow().close();
+                run = false;
+                running = false;
+            }
             else if (auto* kp = ev->getIf<sf::Event::KeyPressed>())
             {
                 if (kp->code == sf::Keyboard::Key::Escape)
+                {
                     getwindow().close();
+                    run = false;
+                    running = false;
+                }
                 else if (kp->code == sf::Keyboard::Key::Up)
                 {
                     run = false;
@@ -641,6 +663,8 @@ void gamemanager::losescreen()
                 else if (kp->code == sf::Keyboard::Key::Down)
                 {
                     getwindow().close();
+                    run = false;
+                    running = false;
                 }
             }
         }
@@ -657,16 +681,24 @@ void gamemanager::losescreen()
 void gamemanager::startscreen()
 {
     bool run = true;
-    while (run)
+    while (run && getwindow().isOpen())
     {
         while (auto ev = getwindow().pollEvent()) {
 
             if (ev->is<sf::Event::Closed>())
+            {
                 getwindow().close();
+                run = false;
+                running = false;
+            }
             else if (auto* kp = ev->getIf<sf::Event::KeyPressed>())
             {
                 if (kp->code == sf::Keyboard::Key::Escape)
+                {
                     getwindow().close();
+                    run = false;
+                    running = false;
+                }
                 else if (kp->code == sf::Keyboard::Key::Up)
                 {
                     run = false;
