@@ -8,18 +8,29 @@ if you want to build it yourself, you are going to need:
 
 To build it you go into powershell and:
 
-git clone https://github.com/VladThePickle/TetrisSFML.git
-cd TetrisSFML\RawFiles
+     git clone https://github.com/VladThePickle/TetrisSFML.git
+     cd TetrisSFML\RawFiles
 
 if you setup vckpg skip this step:
-git clone https://github.com/microsoft/vcpkg.git C:/path/to/vcpkg
-cd C:/path/to/vcpkg
-.\bootstrap-vcpkg.bat        # Windows
-# or
-./bootstrap-vcpkg.sh         # macOS/Linux
 
-C:/path/to/vcpkg/vcpkg install --triplet x64-windows
+    git clone https://github.com/microsoft/vcpkg.git C:/path/to/vcpkg
+
+    cd C:/path/to/vcpkg
+
+    .\bootstrap-vcpkg.bat  
+
+or if you are on linux:
+
+    ./bootstrap-vcpkg.sh      
+
+
+
+install the dependencies:
+
+    C:/path/to/vcpkg/vcpkg install --triplet x64-windows
 
 then to build you just:
-cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
-cmake --build build --config Release
+
+    cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+    cmake --build build --config Release
